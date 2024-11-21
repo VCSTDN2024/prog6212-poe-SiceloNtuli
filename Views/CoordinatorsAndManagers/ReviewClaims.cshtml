@@ -3,7 +3,7 @@
 <style>
     /* Background styling for the entire page */
     body {
-        background-color: #f5f5f5; 
+        background-color: #f5f5f5;
         font-family: 'Verdana', sans-serif; /* Global font */
         margin: 0;
         padding: 20px;
@@ -80,6 +80,16 @@
             background-color: #c0392b; /* Darker red on hover */
         }
 
+    .btn-primary {
+        background-color: #3498db; /* Blue background */
+        color: white;
+        margin-top: 10px; /* Space from table */
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
     /* Disabled button style */
     button[disabled] {
         background-color: #ccc;
@@ -93,12 +103,17 @@
 </style>
 
 <h2>Review Claims</h2>
+<form asp-action="AutoVerifyClaims" method="post" style="margin-bottom: 20px;">
+    <button type="submit" class="btn btn-primary">Auto-Verify Claims</button>
+</form>
+
 <table>
     <thead>
         <tr>
             <th>Claim ID</th>
             <th>Lecturer</th>
             <th>Hours Worked</th>
+            <th>Final Payment</th> <!-- New Column -->
             <th>Status</th>
             <th>Document</th>
             <th>Actions</th>
@@ -111,6 +126,7 @@
                 <td>@claim.ClaimId</td>
                 <td>@claim.Lecturer</td>
                 <td>@claim.HoursWorked</td>
+                <td>@claim.FinalPayment.ToString("C", new System.Globalization.CultureInfo("en-ZA"))</td> <!-- Display Final Payment -->
                 <td>@claim.Status</td>
                 <td>
                     @if (!string.IsNullOrEmpty(claim.DocumentPath))
@@ -127,11 +143,6 @@
                         <input type="hidden" name="claimId" value="@claim.ClaimId" />
                         <button type="submit" class="btn btn-danger" @(claim.Status == "Pending" ? "" : "disabled")>Reject</button>
                     </form>
-                    <!-- Add button to trigger AutoVerifyClaims -->
-                    <form asp-action="AutoVerifyClaims" method="post" style="margin-bottom: 20px;">
-                        <button type="submit" class="btn btn-primary">Auto-Verify Claims</button>
-                    </form>
-
                 </td>
             </tr>
         }

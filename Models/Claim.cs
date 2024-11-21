@@ -10,5 +10,8 @@ namespace PROG6212_Part1.Models
         public string? Notes { get; set; }
         public string Status { get; set; } = "Pending";
         public string? DocumentPath { get; set; } // Path to uploaded document
+
+        // Automatically calculate the final payment
+        public decimal FinalPayment => HoursWorked * HourlyRate;
     }
 }

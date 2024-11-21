@@ -1,0 +1,137 @@
+﻿@model List<PROG6212_Part1.Models.Claim>
+
+<style>
+    /* Background styling for the entire page */
+    body {
+        background-color: #f0f8ff;
+        font-family: 'Verdana', sans-serif; /* Global font */
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Styling for the heading (h2) */
+    h2 {
+        background-color: #d3e5ff; /* Light blue background */
+        color: #222; /* Darker grey font color */
+        font-family: 'Arial', sans-serif; /* Font family for h2 */
+        padding: 15px; /* Padding inside the heading */
+        border-radius: 5px; /* Rounded corners */
+        text-align: center; /* Center-align heading */
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a 3D effect */
+    }
+
+    /* Styling for the form sections (submit and track claims) */
+    .submit-claim, .track-claims {
+        background-color: #ffffff; /* White background for contrast */
+        padding: 20px;
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for form section */
+        margin-bottom: 20px;
+    }
+
+    /* Styling for form labels */
+    label {
+        font-family: 'Verdana', sans-serif; /* Font for form labels */
+        color: #555; /* Medium grey color for labels */
+    }
+
+    /* Styling for input fields and textareas */
+    input.form-control, textarea.form-control {
+        font-family: 'Verdana', sans-serif; /* Font for inputs and textarea */
+        color: #333; /* Input text color */
+    }
+
+    /* Styling for the submit button */
+    button {
+        font-family: 'Verdana', sans-serif; /* Font for buttons */
+        background-color: #007bff; /* Blue button background */
+        color: #fff; /* White text */
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+    /* Styling for the table */
+    table {
+        width: 100%; /* Full width table */
+        background-color: cadetblue; /* Table background color */
+        font-family: 'Verdana', sans-serif; /* Font for table content */
+        color: #000; /* Black font color */
+        border-collapse: collapse; /* Collapsed borders */
+    }
+
+    /* Styling for table headers and cells */
+    th, td {
+        border: 1px solid #ddd; /* Border around table cells */
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Styling for table headers */
+    th {
+        background-color: #4CAF50; /* Green background for table headers */
+        color: white; /* White font for headers */
+    }
+
+    /* Styling for even table rows */
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Light grey background for even rows */
+    }
+</style>
+
+<h2>Submit a Claim</h2>
+<form asp-action="SubmitClaim" method="post" enctype="multipart/form-data">
+    <div class="submit-claim">
+        <label>Lecturer Name:</label>
+        <input type="text" name="lecturer" class="form-control" required />
+        <label>Hours Worked:</label>
+        <input type="number" name="hoursWorked" class="form-control" required />
+        <label>Hourly Rate:</label>
+        <input type="number" name="hourlyRate" class="form-control" required />
+        <label>Notes (optional):</label>
+        <textarea name="notes" class="form-control"></textarea>
+        <label>Upload Document:</label>
+        <input type="file" name="document" accept=".pdf,.docx,.xlsx" class="form-control" required />
+        <small>Allowed file types: .pdf, .docx, .xlsx (max size 5MB)</small>
+        <button type="submit">Submit Claim</button>
+    </div>
+</form>
+
+<h2>Track Claims</h2>
+<div class="track-claims">
+    <table>
+        <thead>
+            <tr>
+                <th>Claim ID</th>
+                <th>Lecturer</th>
+                <th>Hours Worked</th>
+                <th>Status</th>
+                <th>Document</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@claim.ClaimId</td>
+                    <td>@claim.Lecturer</td>
+                    <td>@claim.HoursWorked</td>
+                    <td>@claim.Status</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(claim.DocumentPath))
+                        {
+                            <a href="@claim.DocumentPath" target="_blank">View Document</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

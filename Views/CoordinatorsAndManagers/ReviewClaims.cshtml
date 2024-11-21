@@ -127,6 +127,11 @@
                         <input type="hidden" name="claimId" value="@claim.ClaimId" />
                         <button type="submit" class="btn btn-danger" @(claim.Status == "Pending" ? "" : "disabled")>Reject</button>
                     </form>
+                    <!-- Add button to trigger AutoVerifyClaims -->
+                    <form asp-action="AutoVerifyClaims" method="post" style="margin-bottom: 20px;">
+                        <button type="submit" class="btn btn-primary">Auto-Verify Claims</button>
+                    </form>
+
                 </td>
             </tr>
         }

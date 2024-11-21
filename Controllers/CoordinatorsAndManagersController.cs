@@ -7,37 +7,43 @@ namespace PROG6212_Part1.Controllers
 {
     public class CoordinatorsAndManagersController : Controller
     {
-        // Use the same static list of claims as LecturerController
+        // Static list of claims shared with LecturerController
         private static List<Claim> claims = LecturerController.claims;
 
-        // Action to display the claims
+        // Display the claims for review
         public IActionResult ReviewClaims()
         {
-            return View(claims); // Pass the list of claims to the view
+            return View(claims);
         }
 
-        // POST: Approve claim
+        // Automated verification method
         [HttpPost]
-        public IActionResult ApproveClaim(int claimId)
+        public IActionResult AutoVerifyClaims()
         {
-            var claim = claims.FirstOrDefault(c => c.ClaimId == claimId);
-            if (claim != null)
+            foreach (var claim in claims.Where(c => c.Status == "Pending"))
             {
-                claim.Status = "Approved";
+                if (VerifyClaim(claim))
+                {
+                    claim.Status = "Approved";
+                }
+                else
+                {
+                    claim.Status = "Needs Review";
+                }
             }
-            return RedirectToAction("ReviewClaims"); // Refresh the view
+            return RedirectToAction("ReviewClaims");
         }
 
-        // POST: Reject claim
-        [HttpPost]
-        public IActionResult RejectClaim(int claimId)
+        // Verification logic based on predefined criteria
+        private bool VerifyClaim(Claim claim)
         {
-            var claim = claims.FirstOrDefault(c => c.ClaimId == claimId);
-            if (claim != null)
-            {
-                claim.Status = "Rejected";
-            }
-            return RedirectToAction("ReviewClaims"); // Refresh the view
+            const int maxHours = 40;          //  Maximum hours per week
+            const decimal maxHourlyRate = 500; //  Maximum allowed hourly rate
+
+            // Check if the claim meets criteria
+            return claim.HoursWorked <= maxHours && claim.HourlyRate <= maxHourlyRate;
         }
+
+       
     }
 }

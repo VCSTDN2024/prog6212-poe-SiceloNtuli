@@ -48,7 +48,54 @@ namespace PROG6212_Part1.Controllers
                 return View("SubmitAndTrackClaim", claims);
             }
 
-            
+            // Validate file type and size
+            var fileExtension = Path.GetExtension(document.FileName).ToLower();
+            if (!AllowedFileExtensions.Contains(fileExtension))
+            {
+                ViewBag.ErrorMessage = "Invalid file type. Only .pdf, .docx, and .xlsx files are allowed.";
+                return View("SubmitAndTrackClaim", claims);
+            }
+            if (document.Length > MaxFileSize)
+            {
+                ViewBag.ErrorMessage = "File size exceeds 5MB.";
+                return View("SubmitAndTrackClaim", claims);
+            }
+
+            // Generate a new claim ID
+            int newClaimId = claims.Count + 1;
+
+            // Define the storage path
+            string uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }
+
+            // Define the file path
+            string uniqueFileName = $"{newClaimId}_{Path.GetFileName(document.FileName)}";
+            string filePath = Path.Combine(uploadFolder, uniqueFileName);
+
+            // Save the file
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                document.CopyTo(fileStream);
+            }
+
+            // Add the claim to the list
+            claims.Add(new Claim
+            {
+                ClaimId = newClaimId,
+                Lecturer = lecturer,
+                HoursWorked = hoursWorked,
+                HourlyRate = hourlyRate,
+                Notes = notes,
+                DocumentPath = $"/uploads/{uniqueFileName}",
+                Status = "Pending"
+            });
+
+            // Redirect to the Submit and Track Claim page
+            return RedirectToAction("SubmitAndTrackClaim");
+        }
 
     }
 }

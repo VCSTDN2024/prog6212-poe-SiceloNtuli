@@ -44,6 +44,28 @@ namespace PROG6212_Part1.Controllers
             return claim.HoursWorked <= maxHours && claim.HourlyRate <= maxHourlyRate;
         }
 
-       
+        // Approve claim manually
+        [HttpPost]
+        public IActionResult ApproveClaim(int claimId)
+        {
+            var claim = claims.FirstOrDefault(c => c.ClaimId == claimId);
+            if (claim != null && claim.Status == "Pending")
+            {
+                claim.Status = "Approved";
+            }
+            return RedirectToAction("ReviewClaims");
+        }
+
+        // Reject claim manually
+        [HttpPost]
+        public IActionResult RejectClaim(int claimId)
+        {
+            var claim = claims.FirstOrDefault(c => c.ClaimId == claimId);
+            if (claim != null && claim.Status == "Pending")
+            {
+                claim.Status = "Rejected";
+            }
+            return RedirectToAction("ReviewClaims");
+        }
     }
 }

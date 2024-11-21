@@ -112,6 +112,8 @@
                 <th>Claim ID</th>
                 <th>Lecturer</th>
                 <th>Hours Worked</th>
+                <th>Hourly Rate</th>
+                <th>Final Payment</th>
                 <th>Status</th>
                 <th>Document</th>
             </tr>
@@ -123,6 +125,8 @@
                     <td>@claim.ClaimId</td>
                     <td>@claim.Lecturer</td>
                     <td>@claim.HoursWorked</td>
+                    <td>@claim.HourlyRate</td>
+                    <td>@claim.FinalPayment.ToString("C", new System.Globalization.CultureInfo("en-ZA"))</td> <!-- Display Final Payment in Rands -->
                     <td>@claim.Status</td>
                     <td>
                         @if (!string.IsNullOrEmpty(claim.DocumentPath))
@@ -133,5 +137,6 @@
                 </tr>
             }
         </tbody>
+
     </table>
 </div>

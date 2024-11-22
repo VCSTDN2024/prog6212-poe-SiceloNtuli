@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BpjA2qMLo1mf1DNQBb08gv977C1x+E8NxQs8ILU5Gx0=",
+  "Hash": "CHLlhraj1sHifX5FP9UEij2NRgmCkqqnbd2jjkEwF6s=",
   "Source": "PROG6212_POE",
   "BasePath": "_content/PROG6212_POE",
   "Mode": "Default",
@@ -1307,6 +1307,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\4_ADDB7311MM.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\lab_services_student\\source\\repos\\PROG6212_POE\\wwwroot\\uploads\\5_ADDB7311MM.pdf",
+      "SourceId": "PROG6212_POE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lab_services_student\\source\\repos\\PROG6212_POE\\wwwroot\\",
+      "BasePath": "_content/PROG6212_POE",
+      "RelativePath": "uploads/5_ADDB7311MM.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\5_ADDB7311MM.pdf"
     }
   ]
 }

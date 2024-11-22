@@ -261,6 +261,10 @@
       "PackagePath": "staticwebassets\\uploads\\4_ADDB7311MM.pdf"
     },
     {
+      "Id": "C:\\Users\\lab_services_student\\source\\repos\\PROG6212_POE\\wwwroot\\uploads\\5_ADDB7311MM.pdf",
+      "PackagePath": "staticwebassets\\uploads\\5_ADDB7311MM.pdf"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PROG6212_POE.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

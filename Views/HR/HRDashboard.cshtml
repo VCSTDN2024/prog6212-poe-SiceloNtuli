@@ -1,1 +1,26 @@
-﻿
+﻿@model List<PROG6212_Part1.Models.Claim>
+
+<h2>HR Dashboard</h2>
+<a href="@Url.Action("GenerateReport", "HR")" class="btn btn-primary">Generate Report</a>
+
+<h3>Lecturer Management</h3>
+<form asp-action="UpdateLecturerInfo" method="post">
+    <label for="lecturerName">Select Lecturer:</label>
+    <select name="LecturerName">
+        @foreach (var lecturer in Model.Select(c => c.Lecturer).Distinct())
+        {
+            <option value="@lecturer">@lecturer</option>
+        }
+    </select>
+
+    <label for="NewLecturerName">New Name:</label>
+    <input type="text" name="NewLecturerName" />
+
+    <label for="NewHourlyRate">New Hourly Rate:</label>
+    <input type="number" name="NewHourlyRate" step="0.01" />
+
+    <label for="NewContactInfo">New Contact Info:</label>
+    <input type="text" name="NewContactInfo" />
+
+    <button type="submit">Update Details</button>
+</form>

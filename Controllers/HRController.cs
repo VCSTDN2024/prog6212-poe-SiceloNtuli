@@ -33,10 +33,10 @@ namespace PROG6212_Part1.Controllers
                 doc.Add(new Paragraph("Approved Claims Report:"));
                 doc.Add(new Paragraph(" "));
 
-                // Updated table with 6 columns (added "Contact Details")
+                //  table with 6 columns 
                 PdfPTable table = new PdfPTable(6);
                 table.AddCell("Claim ID:");
-                table.AddCell("Lecturer");
+                table.AddCell("Lecturer:");
                 table.AddCell("Contact Details:");
                 table.AddCell("Hours Worked:");
                 table.AddCell("Hourly Rate:");
@@ -46,7 +46,7 @@ namespace PROG6212_Part1.Controllers
                 {
                     table.AddCell(claim.ClaimId.ToString());
                     table.AddCell(claim.Lecturer);
-                    table.AddCell(claim.Notes ?? "N/A"); // Add contact details
+                    table.AddCell(claim.Notes ?? "N/A"); 
                     table.AddCell(claim.HoursWorked.ToString());
                     table.AddCell("R " + claim.HourlyRate.ToString("N2")); // Format as Rands
                     table.AddCell("R " + claim.FinalPayment.ToString("N2"));
@@ -93,7 +93,7 @@ namespace PROG6212_Part1.Controllers
                         claim.HourlyRate = updateModel.NewHourlyRate.Value;
 
                     if (!string.IsNullOrEmpty(updateModel.NewContactInfo))
-                        claim.Notes = updateModel.NewContactInfo;  // Assuming 'Notes' stores contact info or similar data.
+                        claim.Notes = updateModel.NewContactInfo;  //  'Notes' stores contact info 
                 }
             }
 

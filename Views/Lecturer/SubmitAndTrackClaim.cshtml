@@ -3,87 +3,109 @@
 <style>
     /* Background styling for the entire page */
     body {
-        background-color: #f0f8ff;
+        background-image: url('https://img.freepik.com/premium-photo/blur-background-clouds-sky_49758-694.jpg'); /* New background image */
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
         font-family: 'Verdana', sans-serif; /* Global font */
         margin: 0;
         padding: 20px;
+        color: #002366; /* Dark blue default text color */
     }
 
     /* Styling for the heading (h2) */
     h2 {
-        background-color: #d3e5ff; /* Light blue background */
-        color: #222; /* Darker grey font color */
-        font-family: 'Arial', sans-serif; /* Font family for h2 */
-        padding: 15px; /* Padding inside the heading */
-        border-radius: 5px; /* Rounded corners */
-        text-align: center; /* Center-align heading */
-        margin-bottom: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a 3D effect */
+        background-color: rgba(173, 216, 230, 0.9); /* Light blue with transparency */
+        color: #1A5276; /* Deep blue font color */
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        font-size: 2.2rem; /* Slightly larger font size */
     }
 
-    /* Styling for the form sections (submit and track claims) */
+    /* Styling for form sections (submit and track claims) */
     .submit-claim, .track-claims {
-        background-color: #ffffff; /* White background for contrast */
-        padding: 20px;
-        border-radius: 10px; /* Rounded corners */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for form section */
-        margin-bottom: 20px;
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 30px;
     }
 
     /* Styling for form labels */
     label {
-        font-family: 'Verdana', sans-serif; /* Font for form labels */
-        color: #555; /* Medium grey color for labels */
+        color: #154360; /* Medium blue for labels */
+        font-weight: bold;
     }
 
     /* Styling for input fields and textareas */
     input.form-control, textarea.form-control {
-        font-family: 'Verdana', sans-serif; /* Font for inputs and textarea */
-        color: #333; /* Input text color */
+        color: #1F618D; /* Navy blue input text */
+        border: 2px solid #5DADE2; /* Light blue border */
+        padding: 10px;
     }
 
-    /* Styling for the submit button */
+    /* Styling for buttons */
     button {
-        font-family: 'Verdana', sans-serif; /* Font for buttons */
-        background-color: #007bff; /* Blue button background */
+        background-color: #2874A6; /* Primary blue */
         color: #fff; /* White text */
-        border-radius: 5px;
-        padding: 10px 20px;
+        border-radius: 6px;
+        padding: 12px 25px;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s;
+        font-weight: bold;
     }
 
         button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #21618C; /* Darker blue on hover */
         }
 
     /* Styling for the table */
     table {
-        width: 100%; /* Full width table */
-        background-color: cadetblue; /* Table background color */
-        font-family: 'Verdana', sans-serif; /* Font for table content */
-        color: #000; /* Black font color */
-        border-collapse: collapse; /* Collapsed borders */
+        width: 100%; /* Full width */
+        background-color: rgba(240, 248, 255, 0.9); /* Light blue transparent */
+        border-collapse: collapse;
+        color: #1F618D; /* Text in blue */
+        font-size: 1.2rem;
     }
 
     /* Styling for table headers and cells */
     th, td {
-        border: 1px solid #ddd; /* Border around table cells */
-        padding: 10px;
+        border: 2px solid #5DADE2; /* Blue border */
+        padding: 15px;
         text-align: left;
     }
 
-    /* Styling for table headers */
+    /* Table headers styling */
     th {
-        background-color: #4CAF50; /* Green background for table headers */
-        color: white; /* White font for headers */
+        background-color: #5499C7; /* Medium blue for header */
+        color: white; /* White text */
+        text-transform: uppercase;
     }
 
     /* Styling for even table rows */
     tr:nth-child(even) {
-        background-color: #f2f2f2; /* Light grey background for even rows */
+        background-color: #D6EAF8; /* Light blue */
     }
+
+    /* Styling for odd table rows */
+    tr:nth-child(odd) {
+        background-color: #AED6F1; /* Slightly darker blue */
+    }
+
+    /* Link styling */
+    a {
+        color: #154360; /* Dark blue for links */
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
 </style>
 
 <h2>Submit a Claim</h2>
@@ -137,6 +159,6 @@
                 </tr>
             }
         </tbody>
-
     </table>
 </div>
+>
